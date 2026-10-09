@@ -18,7 +18,7 @@ jobs:
         run: semgrep --version
 
       - name: Varredura Semgrep
-        run: semgrep scan --config=auto --json --output=semgrep.json
+        run: semgrep scan --config=auto --severity=ERROR --error --json --output=semgrep.json
  
       - name: Resumo das correcoes
         if: always()
@@ -31,7 +31,14 @@ jobs:
           rows=['## Semgrep apos as correcoes', '', '| Severidade | Achados |', '|---|---:|']
           counts=collections.Counter(x['extra']['severity'] for x in findings)
           for sev in ['ERROR','WARNING','INFO']:rows.append(f'| {sev} | {counts[sev]} |')
-          rows+=['', '### Regras ainda presentes', '']
+          original=json.loads(Path('evidencias/resultados.json').read_text())['semgrep-auto-antes']['findings']
+          rows+=['', '### Prova das duas correcoes', '', '| Regra | Antes | Agora |', '|---|---:|---:|']
+          targets={'SQL concatenado (Flask)':'python.flask.security.injection.tainted-sql-string.tainted-sql-string', 'subprocess com shell=True':'python.lang.security.audit.subprocess-shell-true.subprocess-shell-true'}
+          for label,rule in targets.items():
+              before=sum(x['rule']==rule for x in original)
+              after=sum(x['check_id']==rule for x in findings)
+              rows.append(f'| {label} | {before} | {after} |')
+          rows+=['', '### Regras ERROR ainda presentes', '']
           for x in findings:rows.append(f"- `{x['check_id']}` em `{x['path']}:{x['start']['line']}`")
           Path(os.environ['GITHUB_STEP_SUMMARY']).write_text('\n'.join(rows))
           PY
@@ -51,6 +58,9 @@ jobs:
         with:
           fetch-depth: 0
  
+      - name: Versao Gitleaks
+        run: docker run --rm zricethezav/gitleaks:latest version
+
       - name: Varredura Gitleaks
         run: |
           docker run --rm -v "$PWD:/repo" zricethezav/gitleaks:latest \
