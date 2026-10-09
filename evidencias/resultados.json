@@ -1,0 +1,1062 @@
+{
+  "run": "38004863518",
+  "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+  "steps": {
+    "git-name": {
+      "command": [
+        "git",
+        "config",
+        "user.name",
+        "Guardioes do Commit"
+      ],
+      "exit": 0
+    },
+    "git-email": {
+      "command": [
+        "git",
+        "config",
+        "user.email",
+        "guardioes-do-commit@users.noreply.github.com"
+      ],
+      "exit": 0
+    },
+    "semgrep-version": {
+      "command": [
+        "semgrep",
+        "--version"
+      ],
+      "exit": 0
+    },
+    "gitleaks-version": {
+      "command": [
+        "gitleaks",
+        "version"
+      ],
+      "exit": 0
+    },
+    "add-vulneravel": {
+      "command": [
+        "git",
+        "add",
+        "-A"
+      ],
+      "exit": 0
+    },
+    "commit-vulneravel": {
+      "command": [
+        "git",
+        "commit",
+        "-m",
+        "feat: núcleo do reator e portal de feitiços"
+      ],
+      "exit": 0
+    },
+    "semgrep-auto-antes": {
+      "command": [
+        "semgrep",
+        "scan",
+        "--config",
+        "auto",
+        "--json",
+        "--output",
+        "/home/runner/work/_temp/evidencias/semgrep-auto-antes.json",
+        "."
+      ],
+      "exit": 0
+    },
+    "semgrep-conjuntos": {
+      "command": [
+        "semgrep",
+        "scan",
+        "--config",
+        "p/python",
+        "--config",
+        "p/javascript",
+        "--config",
+        "p/secrets",
+        "--json",
+        "--output",
+        "/home/runner/work/_temp/evidencias/semgrep-conjuntos.json",
+        "."
+      ],
+      "exit": 0
+    },
+    "semgrep-error-antes": {
+      "command": [
+        "semgrep",
+        "scan",
+        "--config",
+        "auto",
+        "--severity",
+        "ERROR",
+        "--json",
+        "--output",
+        "/home/runner/work/_temp/evidencias/semgrep-error-antes.json",
+        "."
+      ],
+      "exit": 0
+    },
+    "semgrep-guilda": {
+      "command": [
+        "semgrep",
+        "scan",
+        "--config",
+        ".semgrep/regras/",
+        "--json",
+        "--output",
+        "/home/runner/work/_temp/evidencias/semgrep-guilda.json",
+        "."
+      ],
+      "exit": 0
+    },
+    "semgrep-guilda-error": {
+      "command": [
+        "semgrep",
+        "scan",
+        "--config",
+        ".semgrep/regras/",
+        "--error",
+        "--json",
+        "--output",
+        "/home/runner/work/_temp/evidencias/semgrep-guilda-error.json",
+        "."
+      ],
+      "exit": 1
+    },
+    "add-regras-semgrep": {
+      "command": [
+        "git",
+        "add",
+        "-A"
+      ],
+      "exit": 0
+    },
+    "commit-regras-semgrep": {
+      "command": [
+        "git",
+        "commit",
+        "-m",
+        "feat: adiciona regras personalizadas da guilda"
+      ],
+      "exit": 0
+    },
+    "add-duas-correcoes": {
+      "command": [
+        "git",
+        "add",
+        "-A"
+      ],
+      "exit": 0
+    },
+    "commit-duas-correcoes": {
+      "command": [
+        "git",
+        "commit",
+        "-m",
+        "fix: fecha a porta térmica e desliga o shell"
+      ],
+      "exit": 0
+    },
+    "semgrep-error-depois": {
+      "command": [
+        "semgrep",
+        "scan",
+        "--config",
+        "auto",
+        "--severity",
+        "ERROR",
+        "--json",
+        "--output",
+        "/home/runner/work/_temp/evidencias/semgrep-error-depois.json",
+        "."
+      ],
+      "exit": 0
+    },
+    "semgrep-auto-depois": {
+      "command": [
+        "semgrep",
+        "scan",
+        "--config",
+        "auto",
+        "--json",
+        "--output",
+        "/home/runner/work/_temp/evidencias/semgrep-auto-depois.json",
+        "."
+      ],
+      "exit": 0
+    },
+    "add-env-adicionado": {
+      "command": [
+        "git",
+        "add",
+        "-A"
+      ],
+      "exit": 0
+    },
+    "commit-env-adicionado": {
+      "command": [
+        "git",
+        "commit",
+        "-m",
+        "chore: variáveis de ambiente do deploy"
+      ],
+      "exit": 0
+    },
+    "push-env": {
+      "command": [
+        "git",
+        "push",
+        "origin",
+        "HEAD:main"
+      ],
+      "exit": 0
+    },
+    "rm-cached": {
+      "command": [
+        "git",
+        "rm",
+        "--cached",
+        ".env"
+      ],
+      "exit": 0
+    },
+    "add-env-removido": {
+      "command": [
+        "git",
+        "add",
+        "-A"
+      ],
+      "exit": 0
+    },
+    "commit-env-removido": {
+      "command": [
+        "git",
+        "commit",
+        "-m",
+        "chore: remove .env do versionamento"
+      ],
+      "exit": 0
+    },
+    "push-remocao": {
+      "command": [
+        "git",
+        "push",
+        "origin",
+        "HEAD:main"
+      ],
+      "exit": 0
+    },
+    "gitleaks-historico": {
+      "command": [
+        "gitleaks",
+        "git",
+        ".",
+        "--verbose",
+        "--report-path",
+        "/home/runner/work/_temp/evidencias/gitleaks-historico.json"
+      ],
+      "exit": 1
+    },
+    "gitleaks-diretorio": {
+      "command": [
+        "gitleaks",
+        "dir",
+        ".",
+        "--verbose",
+        "--report-path",
+        "/home/runner/work/_temp/evidencias/gitleaks-diretorio.json"
+      ],
+      "exit": 1
+    },
+    "add-regra-gitleaks": {
+      "command": [
+        "git",
+        "add",
+        "-A"
+      ],
+      "exit": 0
+    },
+    "commit-regra-gitleaks": {
+      "command": [
+        "git",
+        "commit",
+        "-m",
+        "feat: detecta tokens ficticios do Holocron"
+      ],
+      "exit": 0
+    },
+    "gitleaks-custom": {
+      "command": [
+        "gitleaks",
+        "git",
+        ".",
+        "--verbose",
+        "--report-path",
+        "/home/runner/work/_temp/evidencias/gitleaks-custom.json",
+        "--config",
+        ".gitleaks.toml"
+      ],
+      "exit": 1
+    },
+    "add-ignore": {
+      "command": [
+        "git",
+        "add",
+        "-A"
+      ],
+      "exit": 0
+    },
+    "commit-ignore": {
+      "command": [
+        "git",
+        "commit",
+        "-m",
+        "chore: documenta uma excecao de credencial ficticia"
+      ],
+      "exit": 0
+    },
+    "gitleaks-apos-ignore": {
+      "command": [
+        "gitleaks",
+        "git",
+        ".",
+        "--verbose",
+        "--report-path",
+        "/home/runner/work/_temp/evidencias/gitleaks-apos-ignore.json",
+        "--config",
+        ".gitleaks.toml"
+      ],
+      "exit": 1
+    },
+    "add-hook": {
+      "command": [
+        "git",
+        "add",
+        "-A"
+      ],
+      "exit": 0
+    },
+    "commit-hook": {
+      "command": [
+        "git",
+        "commit",
+        "-m",
+        "chore: versiona hook para instalacao local"
+      ],
+      "exit": 0
+    },
+    "stage-isca": {
+      "command": [
+        "git",
+        "add",
+        "iscas.txt"
+      ],
+      "exit": 0
+    },
+    "teste-hook": {
+      "command": [
+        "git",
+        "commit",
+        "-m",
+        "test: tentativa bloqueada pelo hook"
+      ],
+      "exit": 1
+    },
+    "unstage-isca": {
+      "command": [
+        "git",
+        "restore",
+        "--staged",
+        "iscas.txt"
+      ],
+      "exit": 0
+    }
+  },
+  "commits": {
+    "vulneravel": "ecd622f9c05e147c6c4edaa469cd23a8a4461f01",
+    "regras-semgrep": "fce4e902383f066e0cf6239ff7cd25d348f070d6",
+    "duas-correcoes": "aaaff7131803b00893430a3e3f631d24ec6bab25",
+    "env-adicionado": "067accf888e584125d3eeab1d714a77be41d25a1",
+    "env-removido": "9cf9d09520a088870cf0b603327104202674dceb",
+    "regra-gitleaks": "3299231a35b46a1adac5fdf5bb63d26758ffa242",
+    "ignore": "7dd6e69bb199e321b182426a51d69a63ec90850f",
+    "hook": "3d6abb23ac982ae4057387bd53c266d8157a512c"
+  },
+  "versions": {
+    "semgrep": "1.180.0",
+    "gitleaks": "8.24.3",
+    "os": "PRETTY_NAME=\"Ubuntu 24.04.5 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"24.04\"\nVERSION=\"24.04.5 LTS (Noble Numbat)\"\nVERSION_CODENAME=noble\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=noble\nLOGO=ubuntu-logo\n"
+  },
+  "semgrep-auto-antes": {
+    "exit": 0,
+    "counts": {
+      "WARNING": 10,
+      "ERROR": 9,
+      "INFO": 1
+    },
+    "findings": [
+      {
+        "rule": "yaml.github-actions.security.github-actions-mutable-action-tag.github-actions-mutable-action-tag",
+        "path": ".github/workflows/laboratorio.yml",
+        "line": 13,
+        "severity": "WARNING",
+        "message": "GitHub Actions step uses a mutable tag or branch reference. Tags and branch names can be silently repointed by the action owner, enabling supply-chain attacks — as seen in the trivy-action and kics-github-action compromises. Pin the reference to a full 40-character commit SHA instead, e.g. `uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608`."
+      },
+      {
+        "rule": "yaml.github-actions.security.github-actions-mutable-action-tag.github-actions-mutable-action-tag",
+        "path": ".github/workflows/laboratorio.yml",
+        "line": 16,
+        "severity": "WARNING",
+        "message": "GitHub Actions step uses a mutable tag or branch reference. Tags and branch names can be silently repointed by the action owner, enabling supply-chain attacks — as seen in the trivy-action and kics-github-action compromises. Pin the reference to a full 40-character commit SHA instead, e.g. `uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608`."
+      },
+      {
+        "rule": "yaml.github-actions.security.github-actions-mutable-action-tag.github-actions-mutable-action-tag",
+        "path": ".github/workflows/laboratorio.yml",
+        "line": 37,
+        "severity": "WARNING",
+        "message": "GitHub Actions step uses a mutable tag or branch reference. Tags and branch names can be silently repointed by the action owner, enabling supply-chain attacks — as seen in the trivy-action and kics-github-action compromises. Pin the reference to a full 40-character commit SHA instead, e.g. `uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608`."
+      },
+      {
+        "rule": "python.sqlalchemy.security.sqlalchemy-execute-raw-query.sqlalchemy-execute-raw-query",
+        "path": "app/estrela_da_morte.py",
+        "line": 16,
+        "severity": "ERROR",
+        "message": "Avoiding SQL string concatenation: untrusted input concatenated with raw SQL query can result in SQL Injection. In order to execute raw query safely, prepared statement should be used. SQLAlchemy provides TextualSQL to easily used prepared statement with named parameters. For complex SQL composition, use SQL Expression Language or Schema Definition Language. In most cases, SQLAlchemy ORM will be a better option."
+      },
+      {
+        "rule": "python.django.security.injection.tainted-sql-string.tainted-sql-string",
+        "path": "app/estrela_da_morte.py",
+        "line": 16,
+        "severity": "ERROR",
+        "message": "Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using the Django object-relational mappers (ORM) instead of raw SQL queries."
+      },
+      {
+        "rule": "python.flask.security.injection.tainted-sql-string.tainted-sql-string",
+        "path": "app/estrela_da_morte.py",
+        "line": 16,
+        "severity": "ERROR",
+        "message": "Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using an object-relational mapper (ORM) such as SQLAlchemy which will protect your queries."
+      },
+      {
+        "rule": "python.flask.security.injection.subprocess-injection.subprocess-injection",
+        "path": "app/estrela_da_morte.py",
+        "line": 22,
+        "severity": "ERROR",
+        "message": "Detected user input entering a `subprocess` call unsafely. This could result in a command injection vulnerability. An attacker could use this vulnerability to execute arbitrary commands on the host, which allows them to download malware, scan sensitive data, or run any command they wish on the server. Do not let users choose the command to run. In general, prefer to use Python API versions of system commands. If you must use subprocess, use a dictionary to allowlist a set of commands."
+      },
+      {
+        "rule": "python.lang.security.dangerous-subprocess-use.dangerous-subprocess-use",
+        "path": "app/estrela_da_morte.py",
+        "line": 22,
+        "severity": "ERROR",
+        "message": "Detected subprocess function 'check_output' with user controlled data. A malicious actor could leverage this to perform command injection. You may consider using 'shlex.escape()'."
+      },
+      {
+        "rule": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+        "path": "app/estrela_da_morte.py",
+        "line": 22,
+        "severity": "ERROR",
+        "message": "Found 'subprocess' function 'check_output' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead."
+      },
+      {
+        "rule": "python.django.security.injection.code.user-eval.user-eval",
+        "path": "app/estrela_da_morte.py",
+        "line": 26,
+        "severity": "WARNING",
+        "message": "Found user data in a call to 'eval'. This is extremely dangerous because it can enable an attacker to execute arbitrary remote code on the system. Instead, refactor your code to not use 'eval' and instead use a safe library for the specific functionality you need."
+      },
+      {
+        "rule": "python.flask.security.injection.user-eval.eval-injection",
+        "path": "app/estrela_da_morte.py",
+        "line": 27,
+        "severity": "ERROR",
+        "message": "Detected user data flowing into eval. This is code injection and should be avoided."
+      },
+      {
+        "rule": "python.lang.security.audit.eval-detected.eval-detected",
+        "path": "app/estrela_da_morte.py",
+        "line": 27,
+        "severity": "WARNING",
+        "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources."
+      },
+      {
+        "rule": "python.requests.security.disabled-cert-validation.disabled-cert-validation",
+        "path": "app/estrela_da_morte.py",
+        "line": 31,
+        "severity": "ERROR",
+        "message": "Certificate verification has been explicitly disabled. This permits insecure connections to insecure servers. Re-enable certification validation."
+      },
+      {
+        "rule": "python.flask.security.audit.app-run-param-config.avoid_app_run_with_bad_host",
+        "path": "app/estrela_da_morte.py",
+        "line": 35,
+        "severity": "WARNING",
+        "message": "Running flask app with host 0.0.0.0 could expose the server publicly."
+      },
+      {
+        "rule": "python.flask.security.audit.debug-enabled.debug-enabled",
+        "path": "app/estrela_da_morte.py",
+        "line": 35,
+        "severity": "WARNING",
+        "message": "Detected Flask app with debug=True. Do not deploy to production with this flag enabled as it will leak sensitive information. Instead, consider using Flask configuration variables or setting 'debug' using system environment variables."
+      },
+      {
+        "rule": "javascript.express.security.audit.express-check-csurf-middleware-usage.express-check-csurf-middleware-usage",
+        "path": "app/hogwarts.js",
+        "line": 6,
+        "severity": "INFO",
+        "message": "A CSRF middleware was not detected in your express application. Ensure you are either using one such as `csurf` or `csrf` (see rule references) and/or you are properly doing CSRF validation in your routes with a token or cookies."
+      },
+      {
+        "rule": "javascript.lang.security.detect-child-process.detect-child-process",
+        "path": "app/hogwarts.js",
+        "line": 10,
+        "severity": "ERROR",
+        "message": "Detected calls to child_process from a function argument `req`. This could lead to a command injection if the input is user controllable. Try to avoid calls to child_process, and if it is needed ensure user input is correctly sanitized or sandboxed. "
+      },
+      {
+        "rule": "javascript.express.security.audit.xss.direct-response-write.direct-response-write",
+        "path": "app/hogwarts.js",
+        "line": 15,
+        "severity": "WARNING",
+        "message": "Detected directly writing to a Response object from user-defined input. This bypasses any HTML escaping and may expose your application to a Cross-Site-scripting (XSS) vulnerability. Instead, use 'resp.render()' to render safely escaped HTML."
+      },
+      {
+        "rule": "javascript.jsonwebtoken.security.audit.jwt-decode-without-verify.jwt-decode-without-verify",
+        "path": "app/hogwarts.js",
+        "line": 19,
+        "severity": "WARNING",
+        "message": "Detected the decoding of a JWT token without a verify step. JWT tokens must be verified before use, otherwise the token's integrity is unknown. This means a malicious actor could forge a JWT token with any claims. Call '.verify()' before using the token."
+      },
+      {
+        "rule": "javascript.express.security.audit.xss.direct-response-write.direct-response-write",
+        "path": "app/hogwarts.js",
+        "line": 20,
+        "severity": "WARNING",
+        "message": "Detected directly writing to a Response object from user-defined input. This bypasses any HTML escaping and may expose your application to a Cross-Site-scripting (XSS) vulnerability. Instead, use 'resp.render()' to render safely escaped HTML."
+      }
+    ]
+  },
+  "semgrep-conjuntos": {
+    "exit": 0,
+    "counts": {
+      "ERROR": 5,
+      "WARNING": 5
+    },
+    "findings": [
+      {
+        "rule": "python.flask.security.injection.tainted-sql-string.tainted-sql-string",
+        "path": "app/estrela_da_morte.py",
+        "line": 16,
+        "severity": "ERROR",
+        "message": "Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using an object-relational mapper (ORM) such as SQLAlchemy which will protect your queries."
+      },
+      {
+        "rule": "python.flask.security.injection.subprocess-injection.subprocess-injection",
+        "path": "app/estrela_da_morte.py",
+        "line": 22,
+        "severity": "ERROR",
+        "message": "Detected user input entering a `subprocess` call unsafely. This could result in a command injection vulnerability. An attacker could use this vulnerability to execute arbitrary commands on the host, which allows them to download malware, scan sensitive data, or run any command they wish on the server. Do not let users choose the command to run. In general, prefer to use Python API versions of system commands. If you must use subprocess, use a dictionary to allowlist a set of commands."
+      },
+      {
+        "rule": "python.lang.security.dangerous-subprocess-use.dangerous-subprocess-use",
+        "path": "app/estrela_da_morte.py",
+        "line": 22,
+        "severity": "ERROR",
+        "message": "Detected subprocess function 'check_output' with user controlled data. A malicious actor could leverage this to perform command injection. You may consider using 'shlex.escape()'."
+      },
+      {
+        "rule": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+        "path": "app/estrela_da_morte.py",
+        "line": 22,
+        "severity": "ERROR",
+        "message": "Found 'subprocess' function 'check_output' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead."
+      },
+      {
+        "rule": "python.django.security.injection.code.user-eval.user-eval",
+        "path": "app/estrela_da_morte.py",
+        "line": 26,
+        "severity": "WARNING",
+        "message": "Found user data in a call to 'eval'. This is extremely dangerous because it can enable an attacker to execute arbitrary remote code on the system. Instead, refactor your code to not use 'eval' and instead use a safe library for the specific functionality you need."
+      },
+      {
+        "rule": "python.flask.security.injection.user-eval.eval-injection",
+        "path": "app/estrela_da_morte.py",
+        "line": 27,
+        "severity": "ERROR",
+        "message": "Detected user data flowing into eval. This is code injection and should be avoided."
+      },
+      {
+        "rule": "python.flask.security.audit.app-run-param-config.avoid_app_run_with_bad_host",
+        "path": "app/estrela_da_morte.py",
+        "line": 35,
+        "severity": "WARNING",
+        "message": "Running flask app with host 0.0.0.0 could expose the server publicly."
+      },
+      {
+        "rule": "python.flask.security.audit.debug-enabled.debug-enabled",
+        "path": "app/estrela_da_morte.py",
+        "line": 35,
+        "severity": "WARNING",
+        "message": "Detected Flask app with debug=True. Do not deploy to production with this flag enabled as it will leak sensitive information. Instead, consider using Flask configuration variables or setting 'debug' using system environment variables."
+      },
+      {
+        "rule": "javascript.express.security.audit.xss.direct-response-write.direct-response-write",
+        "path": "app/hogwarts.js",
+        "line": 15,
+        "severity": "WARNING",
+        "message": "Detected directly writing to a Response object from user-defined input. This bypasses any HTML escaping and may expose your application to a Cross-Site-scripting (XSS) vulnerability. Instead, use 'resp.render()' to render safely escaped HTML."
+      },
+      {
+        "rule": "javascript.express.security.audit.xss.direct-response-write.direct-response-write",
+        "path": "app/hogwarts.js",
+        "line": 20,
+        "severity": "WARNING",
+        "message": "Detected directly writing to a Response object from user-defined input. This bypasses any HTML escaping and may expose your application to a Cross-Site-scripting (XSS) vulnerability. Instead, use 'resp.render()' to render safely escaped HTML."
+      }
+    ]
+  },
+  "semgrep-error-antes": {
+    "exit": 0,
+    "counts": {
+      "ERROR": 9
+    },
+    "findings": [
+      {
+        "rule": "python.sqlalchemy.security.sqlalchemy-execute-raw-query.sqlalchemy-execute-raw-query",
+        "path": "app/estrela_da_morte.py",
+        "line": 16,
+        "severity": "ERROR",
+        "message": "Avoiding SQL string concatenation: untrusted input concatenated with raw SQL query can result in SQL Injection. In order to execute raw query safely, prepared statement should be used. SQLAlchemy provides TextualSQL to easily used prepared statement with named parameters. For complex SQL composition, use SQL Expression Language or Schema Definition Language. In most cases, SQLAlchemy ORM will be a better option."
+      },
+      {
+        "rule": "python.django.security.injection.tainted-sql-string.tainted-sql-string",
+        "path": "app/estrela_da_morte.py",
+        "line": 16,
+        "severity": "ERROR",
+        "message": "Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using the Django object-relational mappers (ORM) instead of raw SQL queries."
+      },
+      {
+        "rule": "python.flask.security.injection.tainted-sql-string.tainted-sql-string",
+        "path": "app/estrela_da_morte.py",
+        "line": 16,
+        "severity": "ERROR",
+        "message": "Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using an object-relational mapper (ORM) such as SQLAlchemy which will protect your queries."
+      },
+      {
+        "rule": "python.flask.security.injection.subprocess-injection.subprocess-injection",
+        "path": "app/estrela_da_morte.py",
+        "line": 22,
+        "severity": "ERROR",
+        "message": "Detected user input entering a `subprocess` call unsafely. This could result in a command injection vulnerability. An attacker could use this vulnerability to execute arbitrary commands on the host, which allows them to download malware, scan sensitive data, or run any command they wish on the server. Do not let users choose the command to run. In general, prefer to use Python API versions of system commands. If you must use subprocess, use a dictionary to allowlist a set of commands."
+      },
+      {
+        "rule": "python.lang.security.dangerous-subprocess-use.dangerous-subprocess-use",
+        "path": "app/estrela_da_morte.py",
+        "line": 22,
+        "severity": "ERROR",
+        "message": "Detected subprocess function 'check_output' with user controlled data. A malicious actor could leverage this to perform command injection. You may consider using 'shlex.escape()'."
+      },
+      {
+        "rule": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+        "path": "app/estrela_da_morte.py",
+        "line": 22,
+        "severity": "ERROR",
+        "message": "Found 'subprocess' function 'check_output' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead."
+      },
+      {
+        "rule": "python.flask.security.injection.user-eval.eval-injection",
+        "path": "app/estrela_da_morte.py",
+        "line": 27,
+        "severity": "ERROR",
+        "message": "Detected user data flowing into eval. This is code injection and should be avoided."
+      },
+      {
+        "rule": "python.requests.security.disabled-cert-validation.disabled-cert-validation",
+        "path": "app/estrela_da_morte.py",
+        "line": 31,
+        "severity": "ERROR",
+        "message": "Certificate verification has been explicitly disabled. This permits insecure connections to insecure servers. Re-enable certification validation."
+      },
+      {
+        "rule": "javascript.lang.security.detect-child-process.detect-child-process",
+        "path": "app/hogwarts.js",
+        "line": 10,
+        "severity": "ERROR",
+        "message": "Detected calls to child_process from a function argument `req`. This could lead to a command injection if the input is user controllable. Try to avoid calls to child_process, and if it is needed ensure user input is correctly sanitized or sandboxed. "
+      }
+    ]
+  },
+  "semgrep-guilda": {
+    "exit": 0,
+    "counts": {
+      "WARNING": 3,
+      "ERROR": 2
+    },
+    "findings": [
+      {
+        "rule": "semgrep.regras.guilda-segredo-fixo",
+        "path": "app/estrela_da_morte.py",
+        "line": 8,
+        "severity": "WARNING",
+        "message": "Variável com cara de segredo recebendo valor fixo no código."
+      },
+      {
+        "rule": "semgrep.regras.guilda-segredo-fixo",
+        "path": "app/estrela_da_morte.py",
+        "line": 9,
+        "severity": "WARNING",
+        "message": "Variável com cara de segredo recebendo valor fixo no código."
+      },
+      {
+        "rule": "semgrep.regras.guilda-shell-true",
+        "path": "app/estrela_da_morte.py",
+        "line": 22,
+        "severity": "ERROR",
+        "message": "subprocess com shell=True permite injeção de comando."
+      },
+      {
+        "rule": "semgrep.regras.guilda-proibe-eval",
+        "path": "app/estrela_da_morte.py",
+        "line": 27,
+        "severity": "ERROR",
+        "message": "Uso de eval detectado. A Guilda proíbe eval em qualquer contexto."
+      },
+      {
+        "rule": "semgrep.regras.guilda-segredo-fixo",
+        "path": "app/hogwarts.js",
+        "line": 7,
+        "severity": "WARNING",
+        "message": "Variável com cara de segredo recebendo valor fixo no código."
+      }
+    ]
+  },
+  "semgrep-guilda-error": {
+    "exit": 1,
+    "counts": {
+      "WARNING": 3,
+      "ERROR": 2
+    },
+    "findings": [
+      {
+        "rule": "semgrep.regras.guilda-segredo-fixo",
+        "path": "app/estrela_da_morte.py",
+        "line": 8,
+        "severity": "WARNING",
+        "message": "Variável com cara de segredo recebendo valor fixo no código."
+      },
+      {
+        "rule": "semgrep.regras.guilda-segredo-fixo",
+        "path": "app/estrela_da_morte.py",
+        "line": 9,
+        "severity": "WARNING",
+        "message": "Variável com cara de segredo recebendo valor fixo no código."
+      },
+      {
+        "rule": "semgrep.regras.guilda-shell-true",
+        "path": "app/estrela_da_morte.py",
+        "line": 22,
+        "severity": "ERROR",
+        "message": "subprocess com shell=True permite injeção de comando."
+      },
+      {
+        "rule": "semgrep.regras.guilda-proibe-eval",
+        "path": "app/estrela_da_morte.py",
+        "line": 27,
+        "severity": "ERROR",
+        "message": "Uso de eval detectado. A Guilda proíbe eval em qualquer contexto."
+      },
+      {
+        "rule": "semgrep.regras.guilda-segredo-fixo",
+        "path": "app/hogwarts.js",
+        "line": 7,
+        "severity": "WARNING",
+        "message": "Variável com cara de segredo recebendo valor fixo no código."
+      }
+    ]
+  },
+  "semgrep-error-depois": {
+    "exit": 0,
+    "counts": {
+      "ERROR": 4
+    },
+    "findings": [
+      {
+        "rule": "python.lang.security.dangerous-subprocess-use.dangerous-subprocess-use",
+        "path": "app/estrela_da_morte.py",
+        "line": 26,
+        "severity": "ERROR",
+        "message": "Detected subprocess function 'check_output' with user controlled data. A malicious actor could leverage this to perform command injection. You may consider using 'shlex.escape()'."
+      },
+      {
+        "rule": "python.flask.security.injection.user-eval.eval-injection",
+        "path": "app/estrela_da_morte.py",
+        "line": 31,
+        "severity": "ERROR",
+        "message": "Detected user data flowing into eval. This is code injection and should be avoided."
+      },
+      {
+        "rule": "python.requests.security.disabled-cert-validation.disabled-cert-validation",
+        "path": "app/estrela_da_morte.py",
+        "line": 35,
+        "severity": "ERROR",
+        "message": "Certificate verification has been explicitly disabled. This permits insecure connections to insecure servers. Re-enable certification validation."
+      },
+      {
+        "rule": "javascript.lang.security.detect-child-process.detect-child-process",
+        "path": "app/hogwarts.js",
+        "line": 10,
+        "severity": "ERROR",
+        "message": "Detected calls to child_process from a function argument `req`. This could lead to a command injection if the input is user controllable. Try to avoid calls to child_process, and if it is needed ensure user input is correctly sanitized or sandboxed. "
+      }
+    ]
+  },
+  "semgrep-auto-depois": {
+    "exit": 0,
+    "counts": {
+      "WARNING": 10,
+      "ERROR": 4,
+      "INFO": 1
+    },
+    "findings": [
+      {
+        "rule": "yaml.github-actions.security.github-actions-mutable-action-tag.github-actions-mutable-action-tag",
+        "path": ".github/workflows/laboratorio.yml",
+        "line": 13,
+        "severity": "WARNING",
+        "message": "GitHub Actions step uses a mutable tag or branch reference. Tags and branch names can be silently repointed by the action owner, enabling supply-chain attacks — as seen in the trivy-action and kics-github-action compromises. Pin the reference to a full 40-character commit SHA instead, e.g. `uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608`."
+      },
+      {
+        "rule": "yaml.github-actions.security.github-actions-mutable-action-tag.github-actions-mutable-action-tag",
+        "path": ".github/workflows/laboratorio.yml",
+        "line": 16,
+        "severity": "WARNING",
+        "message": "GitHub Actions step uses a mutable tag or branch reference. Tags and branch names can be silently repointed by the action owner, enabling supply-chain attacks — as seen in the trivy-action and kics-github-action compromises. Pin the reference to a full 40-character commit SHA instead, e.g. `uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608`."
+      },
+      {
+        "rule": "yaml.github-actions.security.github-actions-mutable-action-tag.github-actions-mutable-action-tag",
+        "path": ".github/workflows/laboratorio.yml",
+        "line": 37,
+        "severity": "WARNING",
+        "message": "GitHub Actions step uses a mutable tag or branch reference. Tags and branch names can be silently repointed by the action owner, enabling supply-chain attacks — as seen in the trivy-action and kics-github-action compromises. Pin the reference to a full 40-character commit SHA instead, e.g. `uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608`."
+      },
+      {
+        "rule": "python.lang.security.dangerous-subprocess-use.dangerous-subprocess-use",
+        "path": "app/estrela_da_morte.py",
+        "line": 26,
+        "severity": "ERROR",
+        "message": "Detected subprocess function 'check_output' with user controlled data. A malicious actor could leverage this to perform command injection. You may consider using 'shlex.escape()'."
+      },
+      {
+        "rule": "python.django.security.injection.code.user-eval.user-eval",
+        "path": "app/estrela_da_morte.py",
+        "line": 30,
+        "severity": "WARNING",
+        "message": "Found user data in a call to 'eval'. This is extremely dangerous because it can enable an attacker to execute arbitrary remote code on the system. Instead, refactor your code to not use 'eval' and instead use a safe library for the specific functionality you need."
+      },
+      {
+        "rule": "python.flask.security.injection.user-eval.eval-injection",
+        "path": "app/estrela_da_morte.py",
+        "line": 31,
+        "severity": "ERROR",
+        "message": "Detected user data flowing into eval. This is code injection and should be avoided."
+      },
+      {
+        "rule": "python.lang.security.audit.eval-detected.eval-detected",
+        "path": "app/estrela_da_morte.py",
+        "line": 31,
+        "severity": "WARNING",
+        "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources."
+      },
+      {
+        "rule": "python.requests.security.disabled-cert-validation.disabled-cert-validation",
+        "path": "app/estrela_da_morte.py",
+        "line": 35,
+        "severity": "ERROR",
+        "message": "Certificate verification has been explicitly disabled. This permits insecure connections to insecure servers. Re-enable certification validation."
+      },
+      {
+        "rule": "python.flask.security.audit.app-run-param-config.avoid_app_run_with_bad_host",
+        "path": "app/estrela_da_morte.py",
+        "line": 39,
+        "severity": "WARNING",
+        "message": "Running flask app with host 0.0.0.0 could expose the server publicly."
+      },
+      {
+        "rule": "python.flask.security.audit.debug-enabled.debug-enabled",
+        "path": "app/estrela_da_morte.py",
+        "line": 39,
+        "severity": "WARNING",
+        "message": "Detected Flask app with debug=True. Do not deploy to production with this flag enabled as it will leak sensitive information. Instead, consider using Flask configuration variables or setting 'debug' using system environment variables."
+      },
+      {
+        "rule": "javascript.express.security.audit.express-check-csurf-middleware-usage.express-check-csurf-middleware-usage",
+        "path": "app/hogwarts.js",
+        "line": 6,
+        "severity": "INFO",
+        "message": "A CSRF middleware was not detected in your express application. Ensure you are either using one such as `csurf` or `csrf` (see rule references) and/or you are properly doing CSRF validation in your routes with a token or cookies."
+      },
+      {
+        "rule": "javascript.lang.security.detect-child-process.detect-child-process",
+        "path": "app/hogwarts.js",
+        "line": 10,
+        "severity": "ERROR",
+        "message": "Detected calls to child_process from a function argument `req`. This could lead to a command injection if the input is user controllable. Try to avoid calls to child_process, and if it is needed ensure user input is correctly sanitized or sandboxed. "
+      },
+      {
+        "rule": "javascript.express.security.audit.xss.direct-response-write.direct-response-write",
+        "path": "app/hogwarts.js",
+        "line": 15,
+        "severity": "WARNING",
+        "message": "Detected directly writing to a Response object from user-defined input. This bypasses any HTML escaping and may expose your application to a Cross-Site-scripting (XSS) vulnerability. Instead, use 'resp.render()' to render safely escaped HTML."
+      },
+      {
+        "rule": "javascript.jsonwebtoken.security.audit.jwt-decode-without-verify.jwt-decode-without-verify",
+        "path": "app/hogwarts.js",
+        "line": 19,
+        "severity": "WARNING",
+        "message": "Detected the decoding of a JWT token without a verify step. JWT tokens must be verified before use, otherwise the token's integrity is unknown. This means a malicious actor could forge a JWT token with any claims. Call '.verify()' before using the token."
+      },
+      {
+        "rule": "javascript.express.security.audit.xss.direct-response-write.direct-response-write",
+        "path": "app/hogwarts.js",
+        "line": 20,
+        "severity": "WARNING",
+        "message": "Detected directly writing to a Response object from user-defined input. This bypasses any HTML escaping and may expose your application to a Cross-Site-scripting (XSS) vulnerability. Instead, use 'resp.render()' to render safely escaped HTML."
+      }
+    ]
+  },
+  "gitleaks-historico": {
+    "exit": 1,
+    "count": 3,
+    "findings": [
+      {
+        "RuleID": "generic-api-key",
+        "File": "app/estrela_da_morte.py",
+        "StartLine": 9,
+        "Commit": "ecd622f9c05e147c6c4edaa469cd23a8a4461f01",
+        "Fingerprint": "ecd622f9c05e147c6c4edaa469cd23a8a4461f01:app/estrela_da_morte.py:generic-api-key:9"
+      },
+      {
+        "RuleID": "slack-bot-token",
+        "File": ".env",
+        "StartLine": 4,
+        "Commit": "067accf888e584125d3eeab1d714a77be41d25a1",
+        "Fingerprint": "067accf888e584125d3eeab1d714a77be41d25a1:.env:slack-bot-token:4"
+      },
+      {
+        "RuleID": "generic-api-key",
+        "File": ".env",
+        "StartLine": 5,
+        "Commit": "067accf888e584125d3eeab1d714a77be41d25a1",
+        "Fingerprint": "067accf888e584125d3eeab1d714a77be41d25a1:.env:generic-api-key:5"
+      }
+    ]
+  },
+  "gitleaks-diretorio": {
+    "exit": 1,
+    "count": 3,
+    "findings": [
+      {
+        "RuleID": "generic-api-key",
+        "File": "app/estrela_da_morte.py",
+        "StartLine": 9,
+        "Commit": "",
+        "Fingerprint": "app/estrela_da_morte.py:generic-api-key:9"
+      },
+      {
+        "RuleID": "slack-bot-token",
+        "File": ".env",
+        "StartLine": 4,
+        "Commit": "",
+        "Fingerprint": ".env:slack-bot-token:4"
+      },
+      {
+        "RuleID": "generic-api-key",
+        "File": ".env",
+        "StartLine": 5,
+        "Commit": "",
+        "Fingerprint": ".env:generic-api-key:5"
+      }
+    ]
+  },
+  "gitleaks-custom": {
+    "exit": 1,
+    "count": 5,
+    "findings": [
+      {
+        "RuleID": "generic-api-key",
+        "File": "app/estrela_da_morte.py",
+        "StartLine": 9,
+        "Commit": "ecd622f9c05e147c6c4edaa469cd23a8a4461f01",
+        "Fingerprint": "ecd622f9c05e147c6c4edaa469cd23a8a4461f01:app/estrela_da_morte.py:generic-api-key:9"
+      },
+      {
+        "RuleID": "generic-api-key",
+        "File": ".env",
+        "StartLine": 5,
+        "Commit": "067accf888e584125d3eeab1d714a77be41d25a1",
+        "Fingerprint": "067accf888e584125d3eeab1d714a77be41d25a1:.env:generic-api-key:5"
+      },
+      {
+        "RuleID": "holocron-token",
+        "File": ".env",
+        "StartLine": 5,
+        "Commit": "067accf888e584125d3eeab1d714a77be41d25a1",
+        "Fingerprint": "067accf888e584125d3eeab1d714a77be41d25a1:.env:holocron-token:5"
+      },
+      {
+        "RuleID": "slack-bot-token",
+        "File": ".env",
+        "StartLine": 4,
+        "Commit": "067accf888e584125d3eeab1d714a77be41d25a1",
+        "Fingerprint": "067accf888e584125d3eeab1d714a77be41d25a1:.env:slack-bot-token:4"
+      },
+      {
+        "RuleID": "github-pat",
+        "File": ".env",
+        "StartLine": 3,
+        "Commit": "067accf888e584125d3eeab1d714a77be41d25a1",
+        "Fingerprint": "067accf888e584125d3eeab1d714a77be41d25a1:.env:github-pat:3"
+      }
+    ]
+  },
+  "ignored_fingerprint": "067accf888e584125d3eeab1d714a77be41d25a1:.env:generic-api-key:5",
+  "gitleaks-apos-ignore": {
+    "exit": 1,
+    "count": 4,
+    "findings": [
+      {
+        "RuleID": "generic-api-key",
+        "File": "app/estrela_da_morte.py",
+        "StartLine": 9,
+        "Commit": "ecd622f9c05e147c6c4edaa469cd23a8a4461f01",
+        "Fingerprint": "ecd622f9c05e147c6c4edaa469cd23a8a4461f01:app/estrela_da_morte.py:generic-api-key:9"
+      },
+      {
+        "RuleID": "github-pat",
+        "File": ".env",
+        "StartLine": 3,
+        "Commit": "067accf888e584125d3eeab1d714a77be41d25a1",
+        "Fingerprint": "067accf888e584125d3eeab1d714a77be41d25a1:.env:github-pat:3"
+      },
+      {
+        "RuleID": "holocron-token",
+        "File": ".env",
+        "StartLine": 5,
+        "Commit": "067accf888e584125d3eeab1d714a77be41d25a1",
+        "Fingerprint": "067accf888e584125d3eeab1d714a77be41d25a1:.env:holocron-token:5"
+      },
+      {
+        "RuleID": "slack-bot-token",
+        "File": ".env",
+        "StartLine": 4,
+        "Commit": "067accf888e584125d3eeab1d714a77be41d25a1",
+        "Fingerprint": "067accf888e584125d3eeab1d714a77be41d25a1:.env:slack-bot-token:4"
+      }
+    ]
+  },
+  "hook_blocked": true,
+  "hook_output": "\n    ○\n    │╲\n    │ ○\n    ○ ░\n    ░    gitleaks\n\n\u001b[90m11:34PM\u001b[0m \u001b[32mINF\u001b[0m \u001b[1m1 commits scanned.\u001b[0m\n\u001b[90m11:34PM\u001b[0m \u001b[32mINF\u001b[0m \u001b[1mscanned ~39 bytes (39 bytes) in 145ms\u001b[0m\n\u001b[90m11:34PM\u001b[0m \u001b[33mWRN\u001b[0m \u001b[1mleaks found: 1\u001b[0m\n",
+  "end_of_labs_head": "3d6abb23ac982ae4057387bd53c266d8157a512c"
+}
