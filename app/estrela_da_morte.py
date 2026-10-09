@@ -1,7 +1,5 @@
-import ast
-import os
+from datetime import datetime, timezone
 import sqlite3
-import subprocess
 import requests
 from flask import Flask, request
 
@@ -15,11 +13,12 @@ def porta_termica():
 
 @app.route("/holocron")
 def holocron():
-    permitidos = {"status": ["/usr/bin/printf", "%s", "operacional"], "data": ["/usr/bin/date", "-u"]}
     cmd = request.args.get("cmd", "")
-    if cmd not in permitidos:
-        return "Comando não permitido", 400
-    return subprocess.check_output(permitidos[cmd], timeout=3)
+    if cmd == "status":
+        return "operacional"
+    if cmd == "data":
+        return datetime.now(timezone.utc).isoformat()
+    return "Comando não permitido", 400
 
 @app.route("/forca")
 def forca():
@@ -27,9 +26,9 @@ def forca():
     if len(valor) > 100:
         return "Entrada muito longa", 400
     try:
-        numero = float(valor)
+        numero = int(valor)
     except ValueError:
-        return "Informe um número", 400
+        return "Informe um número inteiro", 400
     return str(numero)
 
 @app.route("/aliados")
