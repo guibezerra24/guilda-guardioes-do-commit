@@ -1,0 +1,65 @@
+name: Sentinela da Guilda
+ 
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+ 
+jobs:
+  sast:
+    name: Semgrep (SAST)
+    runs-on: ubuntu-latest
+    container:
+      image: semgrep/semgrep
+    steps:
+      - uses: actions/checkout@v6
+ 
+      - name: Versao Semgrep
+        run: semgrep --version
+
+      - name: Varredura Semgrep
+        run: semgrep scan --config=auto --json --output=semgrep.json
+ 
+      - name: Resumo das correcoes
+        if: always()
+        run: |
+          python - <<'PY'
+          import json, os, collections
+          from pathlib import Path
+          data=json.loads(Path('semgrep.json').read_text())
+          findings=data.get('results',[])
+          rows=['## Semgrep apos as correcoes', '', '| Severidade | Achados |', '|---|---:|']
+          counts=collections.Counter(x['extra']['severity'] for x in findings)
+          for sev in ['ERROR','WARNING','INFO']:rows.append(f'| {sev} | {counts[sev]} |')
+          rows+=['', '### Regras ainda presentes', '']
+          for x in findings:rows.append(f"- `{x['check_id']}` em `{x['path']}:{x['start']['line']}`")
+          Path(os.environ['GITHUB_STEP_SUMMARY']).write_text('\n'.join(rows))
+          PY
+
+      - name: Guardar relatório
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: relatorio-semgrep
+          path: semgrep.json
+ 
+  segredos:
+    name: Gitleaks (segredos)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+ 
+      - name: Varredura Gitleaks
+        run: |
+          docker run --rm -v "$PWD:/repo" zricethezav/gitleaks:latest \
+            git /repo --config /repo/.gitleaks.toml \
+            --report-path /repo/gitleaks.json --exit-code 1
+ 
+      - name: Guardar relatório
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: relatorio-gitleaks
+          path: gitleaks.json
