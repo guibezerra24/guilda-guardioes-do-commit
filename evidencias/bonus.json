@@ -1,0 +1,22 @@
+{
+  "exit": 1,
+  "counts": {
+    "ERROR": 2
+  },
+  "findings": [
+    {
+      "rule": "python.lang.security.dangerous-subprocess-use.dangerous-subprocess-use",
+      "path": "app/estrela_da_morte.py",
+      "line": 22,
+      "severity": "ERROR",
+      "message": "Detected subprocess function 'check_output' with user controlled data. A malicious actor could leverage this to perform command injection. You may consider using 'shlex.escape()'."
+    },
+    {
+      "rule": "python.flask.security.injection.nan-injection.nan-injection",
+      "path": "app/estrela_da_morte.py",
+      "line": 30,
+      "severity": "ERROR",
+      "message": "Found user input going directly into typecast for bool(), float(), or complex(). This allows an attacker to inject Python's not-a-number (NaN) into the typecast. This results in undefind behavior, particularly when doing comparisons. Either cast to a different type, or add a guard checking for all capitalizations of the string 'nan'."
+    }
+  ]
+}

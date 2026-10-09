@@ -1,39 +1,41 @@
+from datetime import datetime, timezone
 import sqlite3
-import subprocess
 import requests
 from flask import Flask, request
- 
+
 app = Flask(__name__)
- 
-API_KEY = "AKIAIOSFODNN7EXAMPLE"
-DB_PASSWORD = "senha_do_imperador_123"
- 
+
 @app.route("/porta-termica")
 def porta_termica():
-    alvo = request.args.get("alvo")
-    conn = sqlite3.connect("rebeldes.db")
-    cur = conn.cursor()
-    cur.execute("SELECT * FROM pilotos WHERE nome = ?", (alvo,))
-    return str(cur.fetchall())
- 
+    alvo = request.args.get("alvo", "")
+    with sqlite3.connect("rebeldes.db") as conn:
+        return str(conn.execute("SELECT * FROM pilotos WHERE nome = ?", (alvo,)).fetchall())
+
 @app.route("/holocron")
 def holocron():
-    comando = request.args.get("cmd")
-    permitidos = {"status": ["/usr/bin/printf", "%s", "operacional"],
-                  "data": ["/usr/bin/date", "-u"]}
-    if comando not in permitidos:
-        return "Comando não permitido", 400
-    return subprocess.check_output(permitidos[comando], timeout=3)
- 
+    cmd = request.args.get("cmd", "")
+    if cmd == "status":
+        return "operacional"
+    if cmd == "data":
+        return datetime.now(timezone.utc).isoformat()
+    return "Comando não permitido", 400
+
 @app.route("/forca")
 def forca():
-    expressao = request.args.get("exp")
-    return str(eval(expressao))
- 
+    valor = request.args.get("exp", "")
+    if len(valor) > 100:
+        return "Entrada muito longa", 400
+    try:
+        numero = int(valor)
+    except ValueError:
+        return "Informe um número inteiro", 400
+    return str(numero)
+
 @app.route("/aliados")
 def aliados():
-    r = requests.get("https://aliados.rebeldes.org/lista", verify=False)
+    r = requests.get("https://aliados.rebeldes.org/lista", timeout=5)
+    r.raise_for_status()
     return r.text
- 
+
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0")
+    app.run(debug=False, host="127.0.0.1")
